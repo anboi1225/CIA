@@ -1,0 +1,43 @@
+.navbar-silver{
+	background-color: silver;
+}
+.nav > li > a:hover{
+	background-color:#FCC;
+}
+.nav > li > a:focus{
+	background-color:#FCC;
+}
+.navbar {min-height:10vh;}
+
+#nr {padding-top: 1vh; padding-bottom: 1vh;}
+#nl > li > a {padding-top: 3.5vh; padding-bottom: 3.5vh;}
+body{
+	padding-top: 10vh;
+}
+.silver{
+	background-color: silver;
+}
+.gray{
+	background-color: gray;
+}
+.darkgray{
+	background-color: darkgray;
+}
+.lightgray{
+	background-color: rgb(240, 240, 240);
+}
+.black{
+	background-color: black;
+}
+.gainsboro{
+	background-color: gainsboro;
+}
+.tb{
+	color:black;
+}
+.nav > li > a:hover{
+	background-color: limegreen;
+}
+.nav > li > a:focus{
+	background-color: forestgreen;
+}

@@ -1,0 +1,92 @@
+<div class="container">
+    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+            </div>  
+            <div class="panel-body" >
+                <form name="signUpForm" novalidate class="form-horizontal" role="form">
+                    <div ng-show="errorInfo" class="alert alert-danger col-md-10 col-md-offset-1" role="alert">
+                        <span class="glyphicon glyphicon-alert"></span> {{errorInfo}}
+                    </div>                    
+                    <div class="form-group">                       
+                        <label for="email" class="col-md-10 col-md-offset-1">Email</label>                     
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" type="email" ng-model="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        <p ng-show="signUpForm.email.$invalid && !signUpForm.email.$pristine" class="alert alert-danger col-md-10 col-md-offset-1" role="alert"><span class="glyphicon glyphicon-alert"></span> Invalid email format.</p>
+                    </div>                       
+                    <div class="form-group">
+                        <label for="firstname" class="col-md-10 col-md-offset-1">First Name</label>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" ng-model="firstName" class="form-control" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-md-10 col-md-offset-1">Last Name</label>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" ng-model="lastName" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-10 col-md-offset-1">Password</label>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input name="password" type="password" ng-model="password" class="form-control" ng-change="passwordV()" required placeholder="Password">
+                        </div>
+                        <div class="alert alert-danger col-md-10 col-md-offset-1" role="alert" ng-show="passwordLenErr || passwordCErr || passwordNErr">
+                            <p ng-show="passwordLenErr"><span class="glyphicon glyphicon-alert"></span> {{passwordLenErr}}</p>
+                            <p ng-show="passwordCErr"><span class="glyphicon glyphicon-alert"></span> {{passwordCErr}}</p>
+                            <p ng-show="passwordNErr"><span class="glyphicon glyphicon-alert"></span> {{passwordNErr}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="col-md-10 col-md-offset-1">Confirm Password</label>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" ng-model="confirmPassword" class="form-control" ng-change="confirmV()" required placeholder="confirm your password...">
+                        </div>
+                        <p ng-show="confirmErr" class="alert alert-danger col-md-10 col-md-offset-1"><span class="glyphicon glyphicon-alert"></span> {{confirmErr}}</p>
+                    </div>
+                        
+<!--                     <div class="form-group">
+                        <label for="icode" class="col-md-10 col-md-offset-1">Invitation Code</label>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-king"></i></span>
+                            <input type="text" class="form-control" name="icode" placeholder="code for administrator registration...">
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <!-- Button -->                                        
+                        <div class="col-md-10 col-md-offset-1">
+
+                            <button ng-click="signup()" ng-disabled="passwordLenErr || passwordCErr || passwordNErr || confirmErr || signUpForm.$invalid" class="btn btn-primary btn-block">Sign Up</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:100%" >
+                                Already have an account? 
+                                <a ui-sref="SignIn">
+                                    Sign In Here
+                                </a>
+                            </div>
+                            <div>
+                                Or
+                                <a ui-sref="Home">
+                                    go Home Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>  
+
+                </form>
+            </div>
+        </div>             
+    </div> 
+</div>

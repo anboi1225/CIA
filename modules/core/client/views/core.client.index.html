@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client Instant Access</title>
+	<base href="/">
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+	<script src="core/client/controllers/core.client.index.controller.js"></script>
+	<script src="core/client/controllers/core.client.header.controller.js"></script>
+    <script src="core/client/directives/core.client.directives.js"></script>
+    <script src="core/client/config/core.client.routes.js"></script>
+    <script src="core/client/config/core.client.app.js"></script>
+    <script src="home/client/controllers/home.client.controller.js"></script>
+    <script src="products/client/controllers/products.client.controller.js"></script>
+    <script src="products/client/config/products.client.routes.js"></script>
+    <script src="user/client/controllers/user.client.profile.controller.js"></script>
+    <script src="user/client/controllers/user.client.signin.controller.js"></script>
+    <script src="user/client/controllers/user.client.signup.controller.js"></script>
+    <script src="user/client/services/user.currentuser.service.js"></script>
+    <!-- <script src="core/client/config/core.client.dependencies.js"></script> -->
+</head>
+<body ng-app="coreApp" ng-controller="coreIndexController">
+	<header>
+		<nav-bar></nav-bar>
+	</header>
+	<body class="darkgray">
+		<div ui-view></div>
+	</body>
+	<footer></footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="user/client/css/user.signin.css"/>
+<div class="container">    
+    <div id="loginbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+            </div>     
+
+            <div style="padding-top:30px" class="panel-body" >
+                <div ng-show="errorInfo" class="alert alert-danger col-md-10 col-md-offset-1" role="alert">
+                    <span class="glyphicon glyphicon-alert"></span>  {{errorInfo}}
+                </div>
+                <div ng-show="signUpSuccessInfo" class="alert alert-success col-md-10 col-md-offset-1" role="alert">
+                    <span class="glyphicon glyphicon-ok"></span> {{signUpSuccessInfo}}
+                </div>
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    
+                <form id="loginform" class="form-horizontal" role="form">
+                    <div class="form-group">        
+                        <lable class="col-md-10 col-md-offset-1">Email</lable>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" ng-model="email" placeholder="email...">
+                        </div>
+                    </div>
+                    <div class="form-group">        
+                        <lable class="col-md-10 col-md-offset-1">Password</lable>    
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" ng-model="password" placeholder="password...">
+                        </div> 
+                    </div>       
+<!--                     <div class="input-group">
+                      <div class="checkbox">
+                        <label>
+                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                        </label>
+                      </div>
+                    </div> -->
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-md-10 col-md-offset-1">
+                          <a button ng-click="signin()" class="btn btn-success btn-block">Sign In</a>
+                          <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:100%" >
+                                Don't have an account? 
+                                <a ui-sref="SignUp">
+                                    Sign Up Here
+                                </a>
+
+                            </div>
+                            <div>
+                                Or
+                                <a ui-sref="Home">
+                                    go Home Page
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>    
+                </form>     
+            </div>                     
+        </div>  
+    </div>
+
+</div>

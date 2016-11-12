@@ -1,0 +1,33 @@
+{
+  "name": "cia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",    
+    "ejs" : "latest",            
+    "mongoose" : "latest",          
+    "passport" : "latest",         
+    "passport-local" : "latest",    
+    "passport-facebook" : "latest", 
+    "passport-twitter" : "latest",  
+    "passport-google-oauth" : "latest",
+    "connect-flash" : "latest", 
+    "bcrypt-nodejs" : "latest",
+
+    "morgan": "latest",
+    "cookie-parser": "latest",
+    "method-override": "latest",
+    "express-session": "latest",
+
+    "jsonwebtoken": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -21,7 +21,7 @@ angular.module("userSignupCtrl", []).controller("userSignupController", ["$scope
 			});
 		}
 		$scope.passwordV = function(){
-			if($scope.password.length < 6){
+			if($scope.password == undefined || $scope.password.length < 6){
 				$scope.passwordLenErr = "The password should be at least 6 characters.";
 			}else{
 				$scope.passwordLenErr = undefined;
@@ -42,6 +42,20 @@ angular.module("userSignupCtrl", []).controller("userSignupController", ["$scope
 				$scope.confirmErr = "The 2 passwords are not match each other."
 			}else{
 				$scope.confirmErr = undefined;
+			}
+		};
+		$scope.firstNameV = function(){
+			if(!$scope.firstName){
+				$scope.firstNameError = "First name field is required, could not be empty."
+			}else{
+				$scope.firstNameError = undefined;
+			}
+		};
+		$scope.lastNameV = function(){
+			if(!$scope.lastName){
+				$scope.lastNameError = "Last name field is required, could not be empty."
+			}else{
+				$scope.lastNameError = undefined;
 			}
 		};
 	}]);

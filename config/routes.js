@@ -1,5 +1,4 @@
 // console.log(__dirname);
-var userCRUD = require("../modules/user/server/controllers/user.server.crud.controller.js");
 
 module.exports = function(app, passport){
 
@@ -30,8 +29,11 @@ module.exports = function(app, passport){
         res.json(req.user);
       });
     })(req, res, next);
-  });
-  app.use("/user/restful", userCRUD);
+  });  
+  /*
+    never use app.use out of server.js
+    app.use("/user/restful", userCRUD);
+  */
 }
 
 // route middleware to make sure a user is logged in

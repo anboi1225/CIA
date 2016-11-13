@@ -9,7 +9,7 @@ var morgan = require("morgan");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var configDB = require("./config/database.js");
-
+var userCRUD = require("./modules/user/server/controllers/user.server.crud.controller.js");
 // configuration ===============================================================
 
 mongoose.connect(configDB.url);
@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
+app.use("/user/restful", userCRUD);
 
 require("./config/routes.js")(app, passport);
 var port = process.env.PORT || 8080;

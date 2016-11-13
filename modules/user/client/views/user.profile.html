@@ -1,3 +1,5 @@
+<script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
+
 <link rel="stylesheet" href="user/client/css/user.profile.css"/>
 
 <div class="container" style="margin-top: 5vh">
@@ -10,64 +12,86 @@
               <div class="text-center">
                 <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
-                <input type="file" class="text-center center-block well well-sm">
+                <!-- <input type="file" class="text-center center-block well well-sm"> -->
+                <input type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" onchange="console.log(event.fpfile)"/>
               </div>
             </div>
             <!-- edit form column -->
             <div class="col-md-8 col-sm-6 col-xs-12">
-              <form class="form-horizontal" role="form">
+              <form class="form-horizontal" role="form" name="profileForm">
+                <div ng-show="updateSuccess" class="alert alert-success alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" aria-label="Close" ng-click="alertClose()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span class="glyphicon glyphicon-ok"></span> {{updateSuccess}}
+                </div>
+                <div ng-show="updateError" class="alert alert-warning alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" aria-label="Close" ng-click="alertClose()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span class="glyphicon glyphicon-asterisk"></span> {{updateError}}
+                </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">First name:</label>
                   <div class="col-lg-8 input-group">
-                    <input class="form-control" ng-model="currentUser.local.firstName" type="text" readonly id="firstNameInput">
-                    <a class="input-group-addon" ng-click="editFirstName()" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <input class="form-control" ng-model="currentUser.local.firstName" type="text" readonly id="firstNameInput" ng-change="firstNameV()" required>
+                    <a class="input-group-addon" ng-click="editFirstName()" href="#"><span class="glyphicon glyphicon-lock"></span></a>
                   </div>
+                  <p class="alert alert-danger col-lg-8 col-lg-offset-3" ng-show="firstNameError"><span class="glyphicon glyphicon-alert"></span> {{firstNameError}}</p>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Last name:</label>
                   <div class="col-lg-8 input-group">
-                    <input class="form-control" ng-model="currentUser.local.lastName" type="text" readonly="false" id="lastNameInput">
-                    <a class="input-group-addon" href="#" ng-click="editLastName()"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <input class="form-control" ng-model="currentUser.local.lastName" type="text" readonly="false" id="lastNameInput" ng-change="lastNameV()" required>
+                    <a class="input-group-addon" href="#" ng-click="editLastName()"><span class="glyphicon glyphicon-lock"></span></a>
                   </div>
+                  <p class="alert alert-danger col-lg-8 col-lg-offset-3" ng-show="lastNameError"><span class="glyphicon glyphicon-alert"></span> {{lastNameError}}</p>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Company:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" type="text" readonly="true" ng-model="currentUser.local.company" id="companyInput">
-                    <a class="input-group-addon" href="#" ng-click="editCompany()"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editCompany()"><span class="glyphicon glyphicon-lock"></span></a>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Email:</label>
                   <div class="col-lg-8 input-group">
-                    <input class="form-control" ng-model="currentUser.local.email" type="text" readonly="true" id="emailInput">
-                    <a class="input-group-addon" href="#" ng-click="editEmail()"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <input class="form-control" ng-model="currentUser.local.email" type="email" readonly="true" id="emailInput" required name="email">
+                    <a class="input-group-addon" href="#" ng-click="editEmail()"><span class="glyphicon glyphicon-lock"></span></a>
                   </div>
+                  <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine" class="alert alert-danger col-lg-8 col-lg-offset-3" role="alert"><span class="glyphicon glyphicon-alert"></span> Invalid email format.</p>
                 </div>
                 <div class="form-group">
                   <label class="col-md-3 control-label">Address:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" type="text" readonly="true" ng-model="currentUser.local.address" id="addressInput">
-                    <a class="input-group-addon" href="#" ng-click="editAddress()"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editAddress()"><span class="glyphicon glyphicon-lock"></span></a>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-3 control-label">Password:</label>
+                  <label class="col-md-3 control-label"><span style="color: red">*</span>Password:</label>
                   <div class="col-lg-8 input-group">
-                    <input class="form-control" ng-model="currentUser.local.password" type="password" readonly="true" id="passwordInput">
+                    <input class="form-control" ng-model="password" type="password" readonly="true" id="passwordInput" ng-change="passwordV()" required>
                     <a class="input-group-addon" href="#" ng-click="editPassword()"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
+                  <div class="alert alert-danger col-lg-8 col-lg-offset-3" role="alert" ng-show="passwordLenErr || passwordCErr || passwordNErr">
+                      <p ng-show="passwordLenErr"><span class="glyphicon glyphicon-alert"></span> {{passwordLenErr}}</p>
+                      <p ng-show="passwordCErr"><span class="glyphicon glyphicon-alert"></span> {{passwordCErr}}</p>
+                      <p ng-show="passwordNErr"><span class="glyphicon glyphicon-alert"></span> {{passwordNErr}}</p>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-3 control-label">Confirm Password:</label>
+                  <label class="col-md-3 control-label"><span style="color: red">*</span>Confirm Password:</label>
                   <div class="col-lg-8 input-group">
-                    <input class="form-control" type="password" readonly="true" ng-model="confirmPassword" id="confirmPasswordInput">
+                    <input class="form-control" type="password" readonly="true" ng-model="confirmPassword" id="confirmPasswordInput" ng-change="confirmV()" required>
                   </div>
+                  <p ng-show="confirmErr" class="alert alert-danger col-lg-8 col-lg-offset-3"><span class="glyphicon glyphicon-alert"></span> {{confirmErr}}</p>
                 </div>
                 <div class="form-group">
                     <div class="row col-md-offset-3">
                         <div class="col-md-5">
-                            <button class="btn btn-primary btn-block" ng-click="saveChange()">Save Changes</button>
+                            <button class="btn btn-primary btn-block" ng-click="saveChange()" ng-disabled="passwordLenErr || passwordCErr || passwordNErr || confirmErr || profileForm.$invalid">Save Changes</button>
                         </div>
                         <div class="col-md-5">
                             <button ng-click="cancel()" class="btn btn-default btn-block">Cancel</button>

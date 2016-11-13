@@ -10,6 +10,7 @@ angular.module("userProfileCtrl",[]).controller("userProfileController", ["$scop
 		angular.element("#addressInput").attr("readonly", "readonly");
 		angular.element("#passwordInput").attr("readonly", "readonly");
 		angular.element("#confirmPasswordInput").attr("readonly", "readonly");
+		$scope.confirmPassword = "";
 	};
 	$scope.editFirstName = function(){
 		angular.element("#firstNameInput").removeAttr("readonly");
@@ -29,5 +30,18 @@ angular.module("userProfileCtrl",[]).controller("userProfileController", ["$scop
 	$scope.editPassword = function(){
 		angular.element("#passwordInput").removeAttr("readonly");
 		angular.element("#confirmPasswordInput").removeAttr("readonly");
+	};
+	$scope.saveChange = function(){
+		var newUser = {
+			email: $scope.currentUser.local.email,
+			password: $scope.currentUser.local.password,
+			firstName: $scope.currentUser.local.firstName,
+			lastName: $scope.currentUser.local.lastName,
+			company: $scope.currentUser.local.company,
+			address: $scope.currentUser.local.address
+		};
+		$http.put("/user/restful/" + $scope.currentUser._id, newUser).then(function(resp){
+			$window.localStorage["currentUser"] = JSON.stringify($scope.currentUser);
+		});
 	};
 }]);

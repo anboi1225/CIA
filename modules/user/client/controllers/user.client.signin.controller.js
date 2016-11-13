@@ -6,7 +6,7 @@ angular.module("userSigninCtrl", []).controller("userSigninController", ["$scope
 			email : $scope.email,
 			password: $scope.password
 		}
-		$http.post("/signin", userSigninData).then(function(resp){
+		$http.post("/signin", userSigninData).then(function(resp){		
 			if(resp.data.type == "error"){
 				$scope.errorInfo = resp.data.info;
 			}else{

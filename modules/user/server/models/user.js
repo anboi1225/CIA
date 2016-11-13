@@ -16,7 +16,9 @@ var userSchema = mongoose.Schema({
         userType     : String,
         services     : Array,
         balance      : Number,
-        dueDate      : Date
+        dueDate      : Date,
+        dpURL        : {type: String, default: "https://cdn.filestackcontent.com/KCAFATRISfG1RuqM5DJg"},
+        createDate   : {type: Date, default: Date.now}
     },
     facebook         : {
         id           : String,

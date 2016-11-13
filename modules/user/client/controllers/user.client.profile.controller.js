@@ -46,7 +46,8 @@ angular.module("userProfileCtrl",[]).controller("userProfileController", ["$scop
 			firstName: $scope.currentUser.local.firstName,
 			lastName: $scope.currentUser.local.lastName,
 			company: $scope.currentUser.local.company,
-			address: $scope.currentUser.local.address
+			address: $scope.currentUser.local.address,
+			dpURL: $scope.currentUser.local.dpURL
 		};
 		$http.put("/user/restful/" + $scope.currentUser._id, newUser).then(function(resp){
 			if(resp.data.type == "success"){

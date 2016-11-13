@@ -14,7 +14,7 @@ angular.module("userSignupCtrl", []).controller("userSignupController", ["$scope
 					$location.path("/signup");
 				}
 				else{
-					$window.localStorage["currentUser"] = JSON.stringify(resp.data);
+					//$window.localStorage["currentUser"] = JSON.stringify(resp.data);
 					$window.localStorage["signupSucInfo"] = "Sign up succefully, please sign in.";
 					$location.path("/signin");
 				}

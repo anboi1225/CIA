@@ -10,10 +10,11 @@
         <div class="panel-body">
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="text-center">
-                <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
-                <h6>Upload a different photo...</h6>
+                <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
+                <hr style="background-color: black">
+                <p>Upload a different photo...</p>
                 <!-- <input type="file" class="text-center center-block well well-sm"> -->
-                <input type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" onchange="console.log(event.fpfile)"/>
+                <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>
               </div>
             </div>
             <!-- edit form column -->

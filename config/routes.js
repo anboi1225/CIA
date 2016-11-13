@@ -6,9 +6,9 @@ module.exports = function(app, passport){
   //   resp.json()
   // })
 
-  app.get("/profile", isLoggedIn, function(req, resp){
-    resp.redirect("/profile");
-  });
+  // app.get("/profile", isLoggedIn, function(req, resp){
+  //   resp.redirect("/profile");
+  // });
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');

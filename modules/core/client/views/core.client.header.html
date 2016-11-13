@@ -31,9 +31,10 @@
 					</form>
 
 					<button ng-hide="currentUser" ui-sref="SignIn" class="btn btn-primary navbar-btn">Sign In</button>
-					<div class="btn-group" ng-show="currentUser" id="nr">
-					  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					  hi, {{currentUser.local.firstName}} 
+					<div class="btn-group" ng-show="currentUser"  style="padding-top: 1px; padding-bottom: 1px;">
+					  <button type="button" style="padding: 0; border:none; background: none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  <!-- hi, {{currentUser.local.firstName}}  -->
+					  <image ria-haspopup="true" aria-expanded="false" src="{{currentUser.local.dpURL}}" class="avatar img-circle" alt="avatar" style="width:7vh;height:7vh; background: dimgray">
 					  <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu">

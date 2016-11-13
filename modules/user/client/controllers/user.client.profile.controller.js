@@ -103,4 +103,7 @@ angular.module("userProfileCtrl",[]).controller("userProfileController", ["$scop
 		$scope.updateSuccess = undefined;
 		$scope.updateError = undefined;
 	};
+	$scope.editOnSuccess = function(url){
+		$scope.currentUser.local.dpURL = url;
+	};
 }]);

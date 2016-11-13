@@ -1,6 +1,6 @@
 <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
 
-<link rel="stylesheet" href="user/client/css/user.profile.css"/>
+<script type="text/javascript" src="user/client/controllers/angular_filepicker.min.js"></script>
 
 <div class="container" style="margin-top: 5vh">
     <div class="panel panel-primary">
@@ -10,10 +10,10 @@
         <div class="panel-body">
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="text-center">
-                <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 30vh; height: 30vh; margin-top:5vh;">
                 <hr style="background-color: black">
                 <p>Upload a different photo...</p>
-                <!-- <input type="file" class="text-center center-block well well-sm"> -->
+<!--                 <input filepicker type="filepicker-dragdrop" data-fp-services="computer,facebook,dropbox,box" on-success="EditOnSuccess(event.fpfile.url)" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz"/>; -->
                 <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>
               </div>
             </div>

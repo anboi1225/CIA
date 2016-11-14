@@ -116,7 +116,7 @@ module.exports = function(passport) {
             
             // if user is frozen by admin
             if (user.frozen === true)
-                return done(null, false, {message: "This account has been frozen, please contact the customer server to unfreeze."});
+                return done(null, false, {message: "This account has been frozen, please contact the customer service to unfreeze."});
             
             // all is well, return successful user
             return done(null, user);

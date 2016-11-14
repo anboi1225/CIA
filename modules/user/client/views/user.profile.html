@@ -11,11 +11,27 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="text-center">
                 <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 30vh; height: 30vh; margin-top:2vh; margin-bottom: 2vh;">
-                <span ng-repeat="service in currentUser.local.services" class="label label-success" style="margin-right: 1vh">{{service}}</span>
+                <div>
+                  <span ng-repeat="service in currentUser.local.services" class="label label-success" style="margin-right: 1vh">{{service}}</span>
+                </div>
+                <div class="input-group" style="margin-top: 2vh">
+                  <p class="input-group-addon">Upload photo: </p>
+                  <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>
+                </div>
+                
                 <hr style="border-color: lightgray">
-                <p>Upload a different photo...</p>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p>Balance</p>
+                    <p>{{currentUser.local.balance | currency}}</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <p>Due Date</p>
+                    <p>{{currentUser.local.dueDate | date:'mediumDate'}}</p>
+                  </div>
+                </div>
 <!--                 <input filepicker type="filepicker-dragdrop" data-fp-services="computer,facebook,dropbox,box" on-success="EditOnSuccess(event.fpfile.url)" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz"/>; -->
-                <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>
+
               </div>
             </div>
             <!-- edit form column -->
@@ -37,7 +53,7 @@
                   <label class="col-lg-3 control-label">First name:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" ng-model="currentUser.local.firstName" type="text" readonly id="firstNameInput" ng-change="firstNameV()" required>
-                    <a class="input-group-addon" ng-click="editFirstName()" href="#"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a class="input-group-addon" ng-click="editFirstName()" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                   <p class="alert alert-danger col-lg-8 col-lg-offset-3" ng-show="firstNameError"><span class="glyphicon glyphicon-alert"></span> {{firstNameError}}</p>
                 </div>
@@ -45,7 +61,7 @@
                   <label class="col-lg-3 control-label">Last name:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" ng-model="currentUser.local.lastName" type="text" readonly="false" id="lastNameInput" ng-change="lastNameV()" required>
-                    <a class="input-group-addon" href="#" ng-click="editLastName()"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editLastName()"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                   <p class="alert alert-danger col-lg-8 col-lg-offset-3" ng-show="lastNameError"><span class="glyphicon glyphicon-alert"></span> {{lastNameError}}</p>
                 </div>
@@ -53,14 +69,14 @@
                   <label class="col-lg-3 control-label">Company:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" type="text" readonly="true" ng-model="currentUser.local.company" id="companyInput">
-                    <a class="input-group-addon" href="#" ng-click="editCompany()"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editCompany()"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Email:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" ng-model="currentUser.local.email" type="email" readonly="true" id="emailInput" required name="email">
-                    <a class="input-group-addon" href="#" ng-click="editEmail()"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editEmail()"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                   <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine" class="alert alert-danger col-lg-8 col-lg-offset-3" role="alert"><span class="glyphicon glyphicon-alert"></span> Invalid email format.</p>
                 </div>
@@ -68,14 +84,14 @@
                   <label class="col-md-3 control-label">Address:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" type="text" readonly="true" ng-model="currentUser.local.address" id="addressInput">
-                    <a class="input-group-addon" href="#" ng-click="editAddress()"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editAddress()"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-3 control-label"><span style="color: red">*</span>Password:</label>
                   <div class="col-lg-8 input-group">
                     <input class="form-control" ng-model="password" type="password" readonly="true" id="passwordInput" ng-change="passwordV()" required>
-                    <a class="input-group-addon" href="#" ng-click="editPassword()"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="input-group-addon" href="#" ng-click="editPassword()" style="background-color: lightgreen"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                   <div class="alert alert-danger col-lg-8 col-lg-offset-3" role="alert" ng-show="passwordLenErr || passwordCErr || passwordNErr">
                       <p ng-show="passwordLenErr"><span class="glyphicon glyphicon-alert"></span> {{passwordLenErr}}</p>

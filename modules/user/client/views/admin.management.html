@@ -44,6 +44,7 @@
 						<th>Company</th>
 						<th>Services</th>
 						<th></th>
+						<th></th>
 						<th>Balance</th>
 						<th>Due Date</th>
 						<th>isFrozen</th>
@@ -58,10 +59,17 @@
 						<td>{{user.local.firstName}} {{user.local.lastName}}</td>
 						<td>{{user.local.email}}</td>
 						<td>{{user.local.company}}</td>
-						<td>
+						<td style="text-align: left">
 							<div ng-repeat="service in user.local.services">							
-								<span class="label label-primary">{{service}}</span>
-								<a href="#"><span ng-click="removeService($parent.$index, $index)" class="glyphicon glyphicon-remove" style="color: #d9534f;"></span></a>
+								<span class="label label-primary" align="left">{{service}}</span>
+								
+							</div>
+						</td>
+						<td style="text-align: left;">
+							<div style="margin-left: -6vh;">
+								<div ng-repeat="service in user.local.services">
+									<a href="#"><span ng-click="removeService($parent.$index, $index)" class="glyphicon glyphicon-remove" style="color: #d9534f;"></span></a>
+								</div>
 							</div>
 						</td>
 						<td>
@@ -74,8 +82,8 @@
 							  </ul>
 							</div>
 						</td>
-						<td>{{user.local.balance}}</td>
-						<td>{{user.local.dueDate}}</td>
+						<td>{{user.local.balance | currency}}</td>
+						<td>{{user.local.dueDate | date:'mediumDate'}}</td>
 						<td>
 							<toggle-switch ng-model="user.frozen" on-label="Yes" off-label="No"></toggle-switch>
 						</td>

@@ -28,10 +28,6 @@ router.route("/:uid")
           user.local.lastName = req.body.lastName;
           user.local.company = req.body.company;
           user.local.address = req.body.address;
-          user.local.userType = req.body.userType;
-          user.local.services = req.body.services;
-          user.local.balance = req.body.balance;
-          user.local.dueDate = req.body.dueDate;
           user.local.dpURL = req.body.dpURL;
           user.save();
           resp.send({type: "success", message: "The profile has been updated successfully."});

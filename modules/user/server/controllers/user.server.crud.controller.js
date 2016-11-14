@@ -2,6 +2,13 @@ var express = require("express");
 var User = require("../models/user");
 var router = express.Router();
 
+router.route("/all")
+  .get(function(req, resp){
+    User.find(function(err, users){
+      resp.json(users);
+    });
+  });
+
 router.route("/:uid")
   .get(function(req, resp){
     User.findById(req.params.uid, function(err, user){
@@ -31,6 +38,16 @@ router.route("/:uid")
         });
       }
     });
+  });
+
+router.route("/admin/:uid")
+  .put(function(req, resp){
+    User.findById(req.params.uid, function(err, user){
+      user.frozen = req.body.frozen;
+      user.local.services = req.body.services;
+      user.save();
+      resp.send({type: "success", message: "The user info has been updated successfully."});
+    });      
   });
 
 module.exports = router;

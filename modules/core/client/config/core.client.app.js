@@ -1,2 +1,3 @@
-angular.module("coreApp", ["ui.router", "coreRoute", "coreCtrl", "coreCtrlIndex", "coreDirective", "homeCtrl", "productsCtrl",
-	"userProfileCtrl", "userSigninCtrl", "userSignupCtrl", "userService"]);
+angular.module("coreApp", ["ui.router", "coreRoute", "coreCtrl", "coreCtrlIndex", "coreDirective", "homeCtrl", 
+	"productsCtrl", "userProfileCtrl", "userSigninCtrl", "userSignupCtrl", "userService", "adminCtrl", 
+	"toggle-switch"]);

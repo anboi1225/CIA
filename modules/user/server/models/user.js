@@ -5,7 +5,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 // define the schema for our user model
 var userSchema = mongoose.Schema({
-
+    frozen           : {type: Boolean, default: false},
     local            : {
         email        : String,
         password     : String,
@@ -13,7 +13,7 @@ var userSchema = mongoose.Schema({
         lastName     : String,
         company      : String,
         address      : String,
-        userType     : String,
+        userType     : {type: String, default: "customer"},
         services     : Array,
         balance      : Number,
         dueDate      : Date,

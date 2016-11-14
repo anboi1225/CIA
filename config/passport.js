@@ -113,7 +113,11 @@ module.exports = function(passport) {
             // if the user is found but the password is wrong
             if (!user.validPassword(req.body.password))
                 return done(null, false, {message: 'Invalid password, please try again.'}); // create the loginMessage and save it to session as flashdata
-
+            
+            // if user is frozen by admin
+            if (user.frozen === true)
+                return done(null, false, {message: "This account has been frozen, please contact the customer server to unfreeze."});
+            
             // all is well, return successful user
             return done(null, user);
         });

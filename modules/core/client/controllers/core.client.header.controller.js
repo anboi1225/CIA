@@ -5,10 +5,8 @@ angular.module("coreCtrl", []).controller("coreHeaderController", ["$scope", "cu
 	$scope.signOut = function(){
 		$window.localStorage.removeItem("currentUser");
 		$scope.currentUser = undefined;
-		$http.get("/logout").then(function(resp){
-			
+		$http.get("/logout").then(function(resp){			
 		});
-		$location.path("/");
 	}
 	$scope.$watch(function(){return $window.localStorage["currentUser"]}, function(newValue){
 		$scope.currentUser = (newValue == undefined) ? newValue : JSON.parse(newValue);

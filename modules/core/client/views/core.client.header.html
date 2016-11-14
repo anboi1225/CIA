@@ -34,13 +34,15 @@
 					<div class="btn-group" ng-show="currentUser"  style="padding-top: 1px; padding-bottom: 1px;">
 					  <button type="button" style="padding: 0; border:none; background: none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  <!-- hi, {{currentUser.local.firstName}}  -->
-					  <image ria-haspopup="true" aria-expanded="false" src="{{currentUser.local.dpURL}}" class="avatar img-circle" alt="avatar" style="width:7vh;height:7vh; background: dimgray">
-					  <span class="caret"></span>
+						  <image ria-haspopup="true" aria-expanded="false" src="{{currentUser.local.dpURL}}" class="avatar img-circle" alt="avatar" style="width:7vh;height:7vh; background: dimgray">
+						  <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu">
-					    <li><a ui-sref="Profile">Profile</a></li>
+					    <li><a ui-sref="Profile"><span class="glyphicon glyphicon-user" style="padding-right: 2vh"></span>Profile</a></li>
 					    <li role="separator" class="divider"></li>
-					    <li><a ng-click="signOut()">Log Out</a></li>
+					    <li ng-show="currentUser.local.userType == 'admin'"><a ui-sref="Admin"><span class="glyphicon glyphicon-king" style="padding-right: 2vh"></span>Admin Management</a></li>
+					    <li ng-show="currentUser.local.userType == 'admin'" role="separator" class="divider"></li>
+					    <li><a ui-sref="Home" ng-click="signOut()"><span class="glyphicon glyphicon-log-out" style="padding-right: 2vh"></span>Log Out</a></li>
 					  </ul>
 					</div>
 				</div>

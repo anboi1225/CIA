@@ -26,6 +26,10 @@ angular.module("coreRoute", []).config(["$stateProvider", "$locationProvider", f
 	}).state("Product.ccc", {
 		url: "/product/ccc",
 		templateUrl: "products/client/views/products.client.ccc.html"
+	}).state("Admin", {
+		url: "/admin/management",
+		templateUrl: "user/client/views/admin.management.html",
+		controller: "adminController"
 	}).state("otherwise", {
 		url: "*path",
 		templateUrl: "home/client/views/home.client.view.html",

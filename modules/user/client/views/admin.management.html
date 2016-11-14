@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="panel panel-primary" style="margin-top: 5vh">
+		<div class="panel-heading" style="text-align: center;">
+			<b>Administrator Management System</b>
+		</div>
+		<div class="panel-body">
+			<div ng-show="updatedSucInfo" class="alert alert-success">
+			    <button type="button" class="close" aria-label="Close" ng-click="alertClose()">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+				<span class="glyphicon glyphicon-ok"></span> {{updatedSucInfo}}
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>DP</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Company</th>
+						<th>Services</th>
+						<th>Balance</th>
+						<th>Due Date</th>
+						<th>isFrozen</th>
+						<th>Confirm</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>
+							<img src="{{user.local.dpURL}}" class="avatar img-circle" alt="avatar" style="width:7vh;height:7vh; background: dimgray">
+						</td>
+						<td>{{user.local.firstName}}</td>
+						<td>{{user.local.lastName}}</td>
+						<td>{{user.local.email}}</td>
+						<td>{{user.local.company}}</td>
+						<td>{{user.local.services}}</td>
+						<td>{{user.local.balance}}</td>
+						<td>{{user.local.dueDate}}</td>
+						<td><toggle-switch ng-model="user.frozen" on-label="Yes" off-label="No"></toggle-switch>
+						<td>
+							<button class="btn btn-warning" ng-click="saveChange($index)">Save</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -10,8 +10,9 @@
         <div class="panel-body">
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="text-center">
-                <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 30vh; height: 30vh; margin-top:5vh;">
-                <hr style="background-color: black">
+                <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 30vh; height: 30vh; margin-top:2vh; margin-bottom: 2vh;">
+                <span ng-repeat="service in currentUser.local.services" class="label label-success" style="margin-right: 1vh">{{service}}</span>
+                <hr style="border-color: lightgray">
                 <p>Upload a different photo...</p>
 <!--                 <input filepicker type="filepicker-dragdrop" data-fp-services="computer,facebook,dropbox,box" on-success="EditOnSuccess(event.fpfile.url)" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz"/>; -->
                 <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>

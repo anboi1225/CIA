@@ -34,6 +34,7 @@
 						<th>Email</th>
 						<th>Company</th>
 						<th>Services</th>
+						<th></th>
 						<th>Balance</th>
 						<th>Due Date</th>
 						<th>isFrozen</th>
@@ -49,7 +50,12 @@
 						<td>{{user.local.email}}</td>
 						<td>{{user.local.company}}</td>
 						<td>
-							{{user.local.services}}
+							<div ng-repeat="service in user.local.services">							
+								<span class="label label-primary">{{service}}</span>
+								<a href="#"><span ng-click="removeService($parent.$index, $index)" class="glyphicon glyphicon-remove" style="color: #d9534f;"></span></a>
+							</div>
+						</td>
+						<td>
 							<div class="btn-group">
 							  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    <span class="glyphicon glyphicon-plus"></span>

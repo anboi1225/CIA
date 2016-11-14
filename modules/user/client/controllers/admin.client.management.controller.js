@@ -46,6 +46,11 @@ angular.module("adminCtrl",[]).controller("adminController", ["$scope", "$http",
 		}
 	];
 	$scope.addService = function(parentIndex, index){
-		$scope.users[parentIndex].local.services.push($scope.serviceList[index].name);
+		if($scope.users[parentIndex].local.services.indexOf($scope.serviceList[index].name) < 0){
+			$scope.users[parentIndex].local.services.push($scope.serviceList[index].name);
+		}
+	};
+	$scope.removeService = function(parentIndex, index){
+		$scope.users[parentIndex].local.services.splice(index, 1);
 	};
 }]);

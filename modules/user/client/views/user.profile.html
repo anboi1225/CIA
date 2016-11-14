@@ -11,16 +11,21 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="text-center">
                 <img src="{{currentUser.local.dpURL}}" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 30vh; height: 30vh; margin-top:2vh; margin-bottom: 2vh;">
-                <div>
+                <div ng-hide="currentUser.local.userType == 'admin'">
                   <span ng-repeat="service in currentUser.local.services" class="label label-success" style="margin-right: 1vh">{{service}}</span>
+                </div>
+                <div ng-show="currentUser.local.userType == 'admin'">
+                  <span class="label label-danger" style="margin-right: 1vh">Admin</span>
                 </div>
                 <div class="input-group" style="margin-top: 2vh">
                   <p class="input-group-addon">Upload photo: </p>
                   <input class="form-control" type="filepicker" data-fp-apikey="A9cYScwmoQVS9VQQHPcuJz" ng-model="currentUser.local.dpURL"/>
-                </div>
-                
+                </div>           
                 <hr style="border-color: lightgray">
-                <div class="row">
+                <div ng-show="currentUser.local.userType == 'admin'">
+                  <button class="btn btn-warning btn-block" ui-sref="Admin"><span class="glyphicon glyphicon-flash" style="margin-right: 2vh;"></span>Management</button>
+                </div>
+                <div class="row" ng-hide="currentUser.local.userType == 'admin'">
                   <div class="col-sm-6">
                     <p>Balance</p>
                     <p>{{currentUser.local.balance | currency}}</p>
